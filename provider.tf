@@ -1,0 +1,1 @@
+###---root/provider.tf---
