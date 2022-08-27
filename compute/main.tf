@@ -25,7 +25,7 @@ resource "aws_launch_template" "cicd_bastion_host" {
   key_name               = var.key_name
 
   tags = {
-    Name = "cicd_bastion"
+    Name = "cicd-bastion"
   }
 }
 
@@ -51,7 +51,7 @@ resource "aws_launch_template" "cicd_webserver" {
   user_data              = filebase64("bash_script.sh")
 
   tags = {
-    Name = "cicd_webserver"
+    Name = "cicd-webserver"
   }
 }
 
