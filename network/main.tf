@@ -23,7 +23,7 @@ resource "aws_subnet" "cicd_public_subnet" {
   availability_zone       = ["us-east-2a", "us-east-2b", "us-east-2c"][count.index]
 
   tags = {
-    Name = "cicd-public_${count.index + 1}"
+    Name = "cicd-public-${count.index + 1}"
   }
 }
 
