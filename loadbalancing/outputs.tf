@@ -1,13 +1,13 @@
 ###---loadbalancing/outputs.tf---
 
 output "elb" {
-  value = aws_lb.project_lb.id
+  value = aws_lb.cicd_lb.id
 }
 
 output "alb_tg" {
-  value = aws_lb_target_group.project_tg.arn
+  value = aws_lb_target_group.cicd_tg.arn
 }
 
 output "alb_dns" {
-  value = aws_lb.project_lb.dns_name
+  value = aws_lb.cicd_lb.dns_name
 }

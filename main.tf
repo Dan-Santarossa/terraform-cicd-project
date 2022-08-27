@@ -15,15 +15,15 @@ module "compute" {
   private_subnet = module.network.private_subnet
   public_subnet  = module.network.public_subnet
   elb            = module.loadbalancing.elb
-  alb_tg         = module.loadbalancing.alb_tg
+  cicd_alb_tg    = module.loadbalancing.alb_tg
   key_name       = "ohiokey"
-  
+
 }
 
 module "loadbalancing" {
-  source         = "./loadbalancing"
+  source        = "./loadbalancing"
   public_subnet = module.network.public_subnet
-  vpc_id         = module.network.vpc_id
-  web_sg         = module.network.web_sg
-  database_asg   = module.compute.database_asg
+  vpc_id        = module.network.vpc_id
+  web_sg        = module.network.web_sg
+  database_asg  = module.compute.database_asg
 }

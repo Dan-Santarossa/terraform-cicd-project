@@ -1,7 +1,7 @@
 ###---loadbalancing/main.tf---
 
-resource "aws_lb" "project_lb" {
-  name               = "project-loadbalancer"
+resource "aws_lb" "cicd_lb" {
+  name               = "cicd-loadbalancer"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.web_sg]
@@ -12,8 +12,8 @@ resource "aws_lb" "project_lb" {
   ]
 }
 
-resource "aws_lb_target_group" "project_tg" {
-  name     = "project-lb-tg-${substr(uuid(), 0, 3)}"
+resource "aws_lb_target_group" "cicd_tg" {
+  name     = "cicd-lb-tg-${substr(uuid(), 0, 3)}"
   protocol = var.tg_protocol
   port     = var.tg_port
   vpc_id   = var.vpc_id
@@ -23,12 +23,12 @@ resource "aws_lb_target_group" "project_tg" {
   }
 }
 
-resource "aws_lb_listener" "project_lb_listener" {
-  load_balancer_arn = aws_lb.project_lb.arn
+resource "aws_lb_listener" "cicd_lb_listener" {
+  load_balancer_arn = aws_lb.cicd_lb.arn
   port              = var.listener_port
   protocol          = var.listener_protocol
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.project_tg.arn
+    target_group_arn = aws_lb_target_group.cicd_tg.arn
   }
 }
